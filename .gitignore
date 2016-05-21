@@ -1,4 +1,5 @@
 .idea/
 target/
 test.txt
+testOutput.txt
 TextFormatting.iml

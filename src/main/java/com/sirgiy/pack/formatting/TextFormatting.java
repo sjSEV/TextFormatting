@@ -66,7 +66,7 @@ public class TextFormatting implements IFormatting {
      * @param temporaryString of StringBuilder
      * @return true or false
      */
-    private boolean checkLevel(final int level, final StringBuilder temporaryString) {
+    private boolean checklevel(final int level, final StringBuilder temporaryString) {
 
         int spaseCount = ONE_LEVEL_SPACE * level;
         for (int i = 0; i < spaseCount; i++) {
@@ -81,7 +81,7 @@ public class TextFormatting implements IFormatting {
     /**
      * Set indents in the blocks
      */
-    private void addspaces() {
+    private void addindents() {
 
         textFormatting = formattedText;
         formattedText = new ArrayList<String>();
@@ -106,7 +106,7 @@ public class TextFormatting implements IFormatting {
 
             if (level >= 0) {
                 temporaryString.append(temp);
-                while (!(checkLevel(level, temporaryString))) {
+                while (!(checklevel(level, temporaryString))) {
                     temporaryString.insert(0, space);
                 }
                 formattedText.add(temporaryString.toString());
@@ -117,6 +117,13 @@ public class TextFormatting implements IFormatting {
                 level++;
             }
         }
+    }
+
+    /**
+     * Check spaces in the blocks
+     */
+    private void checkspaces() {
+
     }
 
     /**
@@ -138,7 +145,8 @@ public class TextFormatting implements IFormatting {
             formattedText = new ArrayList<String>();
 
             addwrapping();
-            addspaces();
+            addindents();
+            checkspaces();
 
         } catch (Exception e) {
             System.out.println("\nException: " + e.getMessage());
